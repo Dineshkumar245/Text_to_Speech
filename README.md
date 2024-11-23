@@ -6,8 +6,11 @@ Design: The page features a clean, modern design with a light gradient backgroun
 
 # Key Features:
 1)Input Area: A text area is provided where users can type in the text they want to be converted to speech.
+
 2)Convert to Speech Button: When clicked, this button triggers the text-to-speech conversion, reading out the inputted text using the browser's SpeechSynthesis API.
+
 3)Stop Speech Button: This button allows users to stop the speech immediately.
+
 4)Styling: The page uses a pleasant color scheme, a rounded container, and smooth button hover effects to enhance the user experience.
 
 # Additional Explanation of the JavaScript Code:
