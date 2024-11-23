@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text to Speech</title>
+  <style>
+    /* General Body Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ffe6e6, #ffc8c8);
+    }
+
+    /* Main Container */
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 350px;
+    }
+
+    /* Title Styling */
+    h3 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #e74c3c;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    /* Textarea Styling */
+    textarea {
+      width: 100%;
+      height: 100px;
+      border: 2px solid #007bff;
+      border-radius: 8px;
+      font-size: 16px;
+      resize: none;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+      border-color: #e74c3c;
+    }
+
+    /* Button Styling */
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Stop Button Styling */
+    .stop-btn {
+      background: #e74c3c;
+      margin-top: 10px;
+    }
+
+    .stop-btn:hover {
+      background: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Text to Speech</h3>
+    <textarea id="inputText" placeholder="Type something..."></textarea>
+    <button onclick="speak()">Convert to Speech</button>
+    <button class="stop-btn" onclick="stopSpeech()">Stop Speech</button>
+  </div>
+
+  <script>
+    // Initialize the SpeechSynthesisUtterance
+    var speech = new SpeechSynthesisUtterance();
+
+    function speak() {
+      // Get the input text
+      const text = document.getElementById("inputText").value;
+
+      // Validation for empty input
+      if (text.trim() === "") {
+        alert("Please type something to convert to speech!");
+        return;
+      }
+
+      // Configure speech properties
+      speech.text = text;
+      speech.rate = 1;  // Speech rate
+      speech.volume = 1; // Volume level
+      speech.pitch = 5;  // Pitch level
+
+      // Speak the text
+      window.speechSynthesis.speak(speech);
+    }
+
+    function stopSpeech() {
+      // Stop the speech immediately
+      window.speechSynthesis.cancel();
+    }
+  </script>
+</body>
+</html>
